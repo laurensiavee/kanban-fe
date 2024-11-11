@@ -12,14 +12,14 @@ export default function Home() {
   if(isLoading) getBoard();
 
   function getBoard() {
-    const uri = API_DEV_URI + `board/`;
-    const accessToken = ACCESS_TOKEN
+    const uri = API_DEV_URI + `board/list`;
+    // const accessToken = ACCESS_TOKEN
 
     axios
       .get(uri, {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${accessToken}`,
+          // "Authorization": `Bearer ${accessToken}`,
         },
         withCredentials: true, // Add this line for credentials: 'include'
       })    
@@ -34,7 +34,7 @@ export default function Home() {
   }
 
   return (
-    <div> tes
+    <div> home
     </div>
   );
 }
