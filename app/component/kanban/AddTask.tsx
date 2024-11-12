@@ -11,16 +11,16 @@ export default function AddTask(props: any) {
 
     const board_no = props.board_no
 
-    const [isLoading, setLoading] = useState(true);
-
     const [taskNo, setTaskNo] = useState("");
     const [taskTitle, setTaskTitle] = useState("");
     const [taskDesc, setTaskDesc] = useState("");
 
-    if (isLoading) getLatestTaskNo();
+    useEffect(() =>{
+        getNewTaskNo()
+    }, [])
 
-    function getLatestTaskNo() {
-        const uri = API_DEV_URI + `board/` + board_no + `/latest/task_no`;
+    function getNewTaskNo() {
+        const uri = API_DEV_URI + `board/` + board_no + `/generate/new_task_no`;
     
         axios
           .get(uri, {
@@ -29,21 +29,13 @@ export default function AddTask(props: any) {
             },
           })    
           .then((res) => {
-            const latestTaskNo = res.data.data[0]
-            setTaskNo(generateNewTaskNo(latestTaskNo))
+            const newTaskNo = res.data.data[0]
+            setTaskNo(newTaskNo)
           })
           .finally(() => {
-            setLoading(false);
           });
-      }
-
-    function generateNewTaskNo(latestTaskNo: string): string{
-        const num = latestTaskNo.substring(5, 8)
-        var str = (Number(num) + 1).toString()
-        var pad = "000"
-        var newTaskNo = "TASKD" + pad.substring(0, pad.length - str.length) + str
-        return newTaskNo 
     }
+
     
     function handleChangeTaskTitle(event){
         setTaskTitle(event.target.value)
