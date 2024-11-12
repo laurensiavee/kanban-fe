@@ -25,8 +25,8 @@ export default function Home() {
       })    
       .then((res) => {
         const board = res.data
-        console.log("board")
-        console.log(board)
+        // console.log("board")
+        // console.log(board)
       })
       .finally(() => {
         setLoading(false)

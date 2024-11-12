@@ -26,7 +26,6 @@ export default function Board(data: any) {
   if (isLoading) getBoard(data.board_no);
 
   function taskRespToList(tasks: any) {
-    console.log(tasks)
     setTodoList([]);
     setDoingList([]);
     setDoneList([]);
@@ -136,7 +135,7 @@ export default function Board(data: any) {
   function onDragEnd(result: any) {
     let sourceList = setList(result.source.droppableId);
     let destinationList = setList(result.destination.droppableId);
-    console.log(sourceList[result.source.index]);
+    // console.log(sourceList[result.source.index]);
 
     // let nextState = "";
     // switch (result.destination.droppableId) {
