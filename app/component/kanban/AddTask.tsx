@@ -59,6 +59,7 @@ export default function AddTask(props: any) {
           .then((res) => {})
           .finally(() => {
             handleStateModal(false)
+            window.location.href = "/kanban/" + board_no;
           });
       }
 

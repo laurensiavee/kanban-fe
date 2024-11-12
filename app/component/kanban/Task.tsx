@@ -11,6 +11,7 @@ function deleteTask(taskNo, boardNo){
     .delete(uri)
     .then((res) => {})
     .finally(() => {
+      window.location.href = "/kanban/" + boardNo;
   });
 }
 

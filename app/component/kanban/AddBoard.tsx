@@ -49,6 +49,7 @@ export default function AddBoard(props: any) {
           .then((res) => {})
           .finally(() => {
             handleStateModal(false)
+            window.location.href = "/";
           });
     }
 
