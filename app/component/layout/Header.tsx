@@ -1,7 +1,7 @@
 export default function Header() {
     return (
       <>
-        <nav className="px-5 py-3">
+        <nav className="px-6 py-3">
           <div>myKanban</div>
         </nav>
       </>
