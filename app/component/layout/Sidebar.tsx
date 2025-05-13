@@ -44,7 +44,7 @@ export default function Sidebar() {
                     {boardList.map((board, index) => (
                         <li  key={index}>
                             <a href={`/kanban/${board.board_no}`} className="flex items-center p-2 text-gray-700 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ">
-                                <span className="text-sm flex-1 ms-3 whitespace-nowrap">{board.board_no}</span>
+                                <span className="text-sm flex-1 ms-3 whitespace-nowrap">{board.board_no} - {board.board_name}</span>
                             </a>
                         </li>
                     ))}

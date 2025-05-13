@@ -33,7 +33,7 @@ export default function Task(task: any) {
       <>
         <div className={`m-5 p-5 bg-slate-800 rounded-md ${task.isCancelled ? "line-through text-slate-500" : ""}`}>
             <h1 className="mb-3"><b>{task.task.task_no}</b></h1>
-            <p>{task.task.task_desc}</p>
+            <p>{task.task.task_title}</p>
             <div className='mt-2 text-end'>
               <button 
               onClick={() => editTask(task.task.task_no, task.boardNo)}>
