@@ -227,7 +227,7 @@ export default function Board(data: any) {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        <Task key={task.task_no} task={task} />
+                        <Task key={task.task_no} task={task} boardNo={data.board_no} />
                       </div>
                     )}
                   </Draggable>
@@ -252,7 +252,7 @@ export default function Board(data: any) {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                       >
-                        <Task key={task.task_no} task={task} />
+                        <Task key={task.task_no} task={task} boardNo={data.board_no} />
                       </div>
                     )}
                   </Draggable>
@@ -281,6 +281,7 @@ export default function Board(data: any) {
                           key={task.task_no}
                           task={task}
                           isCancelled={true}
+                          boardNo={data.board_no}
                         />
                       </div>
                     )}
