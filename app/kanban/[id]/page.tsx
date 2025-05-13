@@ -61,21 +61,24 @@ export default function Home({params}) {
       <>
         <div className="flex justify-between">
           <div>
-            <h1 className="text-2xl font-bold mb-2">{board_no}</h1>
+            <div className="flex justify-between">
+              <h1 className="text-2xl font-bold mb-2">{board_no}</h1>
+              <button data-modal-target="static-modal" data-modal-toggle="static-modal" type="button" className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium 
+                rounded-3xl text-sm px-5 py-2 text-center mx-5 outline-none"
+                onClick={() => handleStateModalEdit(true)}>Edit Board</button>
+            </div>
             <h2>{boardName}</h2>
           </div>
-          <button data-modal-target="static-modal" data-modal-toggle="static-modal" type="button" className="text-slate-300 bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium 
-            rounded-3xl text-sm px-5 py-2 text-center m-5 outline-none"
-            onClick={() => handleStateModalEdit(true)}>Edit Board</button>
+          <div className="flex justify-between">
+            <button data-modal-target="static-modal" data-modal-toggle="static-modal" type="button" className="text-slate-300 bg-gradient-to-r from-teal-700 via-teal-800 to-teal-900 hover:bg-gradient-to-br focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium 
+              rounded-3xl text-sm px-5 py-2 text-center m-5 outline-none"
+              onClick={() => deleteBoard(board_no)}>Delete Board</button>
+          </div>
         </div>
         <div className="flex justify-between mb-3">
           <button data-modal-target="static-modal" data-modal-toggle="static-modal" type="button" className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium 
             rounded-full text-sm px-5 py-3 text-center m-5 outline-none"
-            onClick={() => handleStateModal(true)}>+</button>
-
-          <button data-modal-target="static-modal" data-modal-toggle="static-modal" type="button" className="text-slate-300 bg-gradient-to-r from-teal-700 via-teal-800 to-teal-900 hover:bg-gradient-to-br focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium 
-            rounded-3xl text-sm px-5 py-2 text-center m-5 outline-none"
-            onClick={() => deleteBoard(board_no)}>Delete Board</button>
+            onClick={() => handleStateModal(true)}>+ Add Task</button>
         </div>
 
         {isShowModal && <AddTask board_no={board_no} changeState = {handleStateModal}/>}

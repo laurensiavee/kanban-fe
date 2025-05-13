@@ -39,13 +39,10 @@ export default function Home() {
 
   return (
     <>
-      <div> home
-      </div>
-      <div>
-        <button data-modal-target="static-modal" data-modal-toggle="static-modal" type="button" className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium 
-            rounded-full text-sm px-5 py-3 text-center m-5 outline-none"
-            onClick={() => handleStateModal(true)}>+  Add New Board </button>
-      </div>
+      <div> welcome to myKanban!</div>
+      <button data-modal-target="static-modal" data-modal-toggle="static-modal" type="button" className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium 
+          rounded-full text-sm px-5 py-3 text-center m-5 ms-0 outline-none"
+          onClick={() => handleStateModal(true)}>+ Add New Board </button>
 
       {isShowModal && <AddBoard changeState = {handleStateModal}/>}
 
