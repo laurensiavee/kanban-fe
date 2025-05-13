@@ -5,16 +5,23 @@ import Board from "../../component/kanban/Board";
 import { useEffect, useState } from "react";
 import { API_DEV_URI } from "@/app/const/const";
 import axios from "axios";
+import EditBoard from "@/app/component/kanban/EditBoard";
 
 
 export default function Home({params}) {
     const board_no = params.id
     const [isShowModal, setIsShowModal] = useState(false);
+    const [isShowModalEdit, setIsShowModalEdit] = useState(false);
     const [key, setKey] = useState(0); // Add state to force re-render of Board
     const [boardName, setBoardName] = useState("");
+    const [board, setBoard] = useState();
 
     function handleStateModal(isShow: boolean){
       setIsShowModal(isShow)
+    }
+
+    function handleStateModalEdit(isShow: boolean){
+      setIsShowModalEdit(isShow)
     }
 
     useEffect(() => {
@@ -22,7 +29,7 @@ export default function Home({params}) {
         getBoard(board_no)
     }, [isShowModal]);
 
-    function deleteBoard(boardNo){
+    function deleteBoard(boardNo: string){
       const uri = API_DEV_URI + `board/` + boardNo ;
       axios
         .delete(uri)
@@ -44,6 +51,7 @@ export default function Home({params}) {
         .then((res) => {
           const board = res.data
           setBoardName(board.data[0].board_name)
+          setBoard(board.data[0])
         })
         .finally(() => {
         });
@@ -51,9 +59,14 @@ export default function Home({params}) {
     
     return (
       <>
-        <div>
-          <h1 className="text-2xl font-bold">{board_no}</h1>
-          <h2>{boardName}</h2>
+        <div className="flex justify-between">
+          <div>
+            <h1 className="text-2xl font-bold mb-2">{board_no}</h1>
+            <h2>{boardName}</h2>
+          </div>
+          <button data-modal-target="static-modal" data-modal-toggle="static-modal" type="button" className="text-slate-300 bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium 
+            rounded-3xl text-sm px-5 py-2 text-center m-5 outline-none"
+            onClick={() => handleStateModalEdit(true)}>Edit Board</button>
         </div>
         <div className="flex justify-between mb-3">
           <button data-modal-target="static-modal" data-modal-toggle="static-modal" type="button" className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium 
@@ -66,6 +79,8 @@ export default function Home({params}) {
         </div>
 
         {isShowModal && <AddTask board_no={board_no} changeState = {handleStateModal}/>}
+        
+        {isShowModalEdit && <EditBoard board={board} changeState = {handleStateModalEdit}/>}
 
         <Board key={key} board_no={board_no}/>
       </>
